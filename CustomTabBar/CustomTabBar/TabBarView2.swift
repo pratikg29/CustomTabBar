@@ -50,8 +50,6 @@ fileprivate struct TabsLayoutView: View {
         }
     }
     
-    
-    
     private struct TabButton: View {
         let tab: Tab
         @Binding var selectedTab: Tab
@@ -65,15 +63,7 @@ fileprivate struct TabsLayoutView: View {
             } label: {
                 ZStack {
                     if isSelected {
-//                        Circle()
                         RoundedRectangle(cornerRadius: 13, style: .continuous)
-//                            .fill(
-//                                LinearGradient(colors: [.white, .init(white: 0.6)], startPoint: .topLeading, endPoint: .bottomTrailing)
-//                            )
-//                            .shadow(color: .white, radius: 10, x: -7, y: -7)
-//                            .shadow(color: .init(white: 0.6), radius: 10, x: 7, y: 7)
-//                            .matchedGeometryEffect(id: "Selected Tab", in: namespace)
-                        
                             .fill(
                                 Color.white
                             )
@@ -90,11 +80,9 @@ fileprivate struct TabsLayoutView: View {
                         .font(.system(size: 20, weight: .semibold, design: .rounded))
                         .foregroundColor(isSelected ? tab.color : .gray)
                         .scaleEffect(isSelected ? 1 : 0.9)
-//                        .shadow(color: isSelected ? tab.color.opacity(0.5) : .clear, radius: 5, x: 0, y: 0)
                         .animation(isSelected ? .spring(response: 0.5, dampingFraction: 0.3, blendDuration: 1) : .spring(), value: selectedTab)
                 }
             }
-//            .buttonStyle(.plain)
         }
         
         private var isSelected: Bool {

@@ -52,7 +52,7 @@ fileprivate struct TabsLayoutView: View {
                 }
             } label: {
                 ZStack {
-                    if selectedTab == tab {
+                    if isSelected {
                         Circle()
                             .shadow(radius: 10)
                             .background {
@@ -67,13 +67,17 @@ fileprivate struct TabsLayoutView: View {
                     
                     Image(systemName: tab.icon)
                         .font(.system(size: 23, weight: .semibold, design: .rounded))
-                        .foregroundColor(selectedTab == tab ? .init(white: 0.9) : .gray)
-                        .scaleEffect(selectedTab == tab ? 1 : 0.8)
-                        .offset(y: selectedTab == tab ? -40 : 0)
-                        .animation(selectedTab == tab ? .spring(response: 0.5, dampingFraction: 0.3, blendDuration: 1) : .spring(), value: selectedTab)
+                        .foregroundColor(isSelected ? .init(white: 0.9) : .gray)
+                        .scaleEffect(isSelected ? 1 : 0.8)
+                        .offset(y: isSelected ? -40 : 0)
+                        .animation(isSelected ? .spring(response: 0.5, dampingFraction: 0.3, blendDuration: 1) : .spring(), value: selectedTab)
                 }
             }
             .buttonStyle(.plain)
+        }
+        
+        private var isSelected: Bool {
+            selectedTab == tab
         }
     }
 }

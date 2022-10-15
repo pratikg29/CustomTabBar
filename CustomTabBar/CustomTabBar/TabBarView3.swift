@@ -34,8 +34,6 @@ fileprivate struct TabsLayoutView: View {
         }
     }
     
-    
-    
     private struct TabButton: View {
         let tab: Tab
         @Binding var selectedTab: Tab
@@ -65,7 +63,7 @@ fileprivate struct TabsLayoutView: View {
                 }
             } label: {
                 ZStack {
-                    if selectedTab == tab {
+                    if isSelected {
                         Capsule()
                             .fill(tab.color.opacity(0.2))
                             .matchedGeometryEffect(id: "Selected Tab", in: namespace)
@@ -73,17 +71,17 @@ fileprivate struct TabsLayoutView: View {
                     HStack(spacing: 10) {
                         Image(systemName: tab.icon)
                             .font(.system(size: 20, weight: .semibold, design: .rounded))
-                            .foregroundColor(selectedTab == tab ? tab.color : .black.opacity(0.6))
+                            .foregroundColor(isSelected ? tab.color : .black.opacity(0.6))
                             .rotationEffect(.degrees(rotationAngle))
-                            .scaleEffect(selectedTab == tab ? 1 : 0.9)
+                            .scaleEffect(isSelected ? 1 : 0.9)
                             .animation(.easeInOut, value: rotationAngle)
-                            .opacity(selectedTab == tab ? 1 : 0.7)
-                            .padding(.leading, selectedTab == tab ? 20 : 0)
+                            .opacity(isSelected ? 1 : 0.7)
+                            .padding(.leading, isSelected ? 20 : 0)
                             .padding(.horizontal, selectedTab != tab ? 10 : 0)
                             .offset(y: selectedOffset)
                             .animation(.default, value: selectedOffset)
                         
-                        if selectedTab == tab {
+                        if isSelected {
                             Text(tab.title)
                                 .font(.system(size: 20, weight: .semibold, design: .rounded))
                                 .foregroundColor(tab.color)
@@ -92,15 +90,12 @@ fileprivate struct TabsLayoutView: View {
                     }
                     .padding(.vertical, 10)
                 }
-//                .background {
-//                    if selectedTab == tab {
-//                        Capsule()
-//                            .fill(tab.color.opacity(0.2))
-//                            .matchedGeometryEffect(id: "Selected Tab", in: namespace)
-//                    }
-//                }
             }
             .buttonStyle(.plain)
+        }
+        
+        private var isSelected: Bool {
+            selectedTab == tab
         }
     }
 }
