@@ -7,10 +7,22 @@
 
 import SwiftUI
 
+let backgroundColor = Color.init(white: 0.92)
+
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        ZStack {
+            backgroundColor
+                .ignoresSafeArea()
+            VStack(spacing: 70) {
+                TabBarView1()
+                
+                TabBarView2()
+                
+                TabBarView3()
+            }
+            .padding(.horizontal)
+        }
     }
 }
 
@@ -21,21 +33,25 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 
-enum Tab: String, Identifiable, CaseIterable {
-    case home, stats, favourites, settings
+enum Tab: Int, Identifiable, CaseIterable, Comparable {
+    static func < (lhs: Tab, rhs: Tab) -> Bool {
+        lhs.rawValue < rhs.rawValue
+    }
     
-    internal var id: String { rawValue }
+    case home, game, apps, movie
+    
+    internal var id: Int { rawValue }
     
     var icon: String {
         switch self {
         case .home:
             return "house.fill"
-        case .stats:
-            return "chart.bar.xaxis"
-        case .favourites:
-            return "suit.heart.fill"
-        case .settings:
-            return "gearshape.fill"
+        case .game:
+            return "gamecontroller.fill"
+        case .apps:
+            return "square.stack.3d.up.fill"
+        case .movie:
+            return "play.tv.fill"
         }
     }
     
@@ -43,12 +59,12 @@ enum Tab: String, Identifiable, CaseIterable {
         switch self {
         case .home:
             return "Home"
-        case .stats:
-            return "Stats"
-        case .favourites:
-            return "Favorite"
-        case .settings:
-            return "Settings"
+        case .game:
+            return "Games"
+        case .apps:
+            return "Apps"
+        case .movie:
+            return "Movies"
         }
     }
     
@@ -56,12 +72,12 @@ enum Tab: String, Identifiable, CaseIterable {
         switch self {
         case .home:
             return .indigo
-        case .stats:
-            return .purple
-        case .favourites:
-            return .mint
-        case .settings:
-            return .gray
+        case .game:
+            return .pink
+        case .apps:
+            return .orange
+        case .movie:
+            return .teal
         }
     }
 }

@@ -15,24 +15,21 @@ struct TabBarView2: View {
             backgroundView
             
             TabsLayoutView()
+                .frame(height: 90, alignment: .center)
+                .clipped()
         }
-        .frame(height: 70, alignment: .center)
+        .frame(height: 90, alignment: .center)
         .padding(.horizontal, 30)
     }
     
     @ViewBuilder private var backgroundView: some View {
-        RoundedRectangle(cornerRadius: 25, style: .continuous)
-            .fill(LinearGradient(colors: [.init(white: 0.9), .white], startPoint: .topLeading, endPoint: .bottomTrailing))
-            .overlay {
-                LinearGradient(colors: [.init(white: 0.85), .init(white: 0.93)], startPoint: .topLeading, endPoint: .trailing)
-                    .mask {
-                        RoundedRectangle(cornerRadius: 25, style: .continuous)
-                            .stroke(lineWidth: 3)
-//                            .blur(radius: 2)
-                    }
+        LinearGradient(colors: [.init(white: 0.9), .white], startPoint: .top, endPoint: .bottom)
+            .mask {
+                RoundedRectangle(cornerRadius: 25, style: .continuous)
+                    .stroke(lineWidth: 6)
             }
-            .shadow(color: .white, radius: 10, x: -20, y: -20)
-            .shadow(color: .init(white: 0.9), radius: 10, x: 20, y: 20)
+            .shadow(color: .black.opacity(0.5), radius: 5, x: 0, y: 8)
+            .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
     }
 }
 
@@ -46,7 +43,7 @@ fileprivate struct TabsLayoutView: View {
             
             ForEach(Tab.allCases) { tab in
                 TabButton(tab: tab, selectedTab: $selectedTab, namespace: namespace)
-                    .frame(width: 50, height: 50, alignment: .center)
+                    .frame(width: 55, height: 55, alignment: .center)
                 
                 Spacer(minLength: 0)
             }
@@ -62,35 +59,46 @@ fileprivate struct TabsLayoutView: View {
         
         var body: some View {
             Button {
-                withAnimation {
+                withAnimation(.spring(response: 0.6, dampingFraction: 0.6, blendDuration: 0.6)) {
                     selectedTab = tab
                 }
             } label: {
                 ZStack {
-                    if selectedTab == tab {
-                        Circle()
+                    if isSelected {
+//                        Circle()
+                        RoundedRectangle(cornerRadius: 13, style: .continuous)
+//                            .fill(
+//                                LinearGradient(colors: [.white, .init(white: 0.6)], startPoint: .topLeading, endPoint: .bottomTrailing)
+//                            )
+//                            .shadow(color: .white, radius: 10, x: -7, y: -7)
+//                            .shadow(color: .init(white: 0.6), radius: 10, x: 7, y: 7)
+//                            .matchedGeometryEffect(id: "Selected Tab", in: namespace)
+                        
                             .fill(
-                                LinearGradient(colors: [.white, .init(white: 0.7)], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                Color.white
                             )
-                            .shadow(color: .white, radius: 10, x: -10, y: -10)
-                            .shadow(color: .init(white: 0.7), radius: 10, x: 10, y: 10)
-//                            .overlay(content: {
-//                                Circle()
-//                                    .fill(
-//                                        LinearGradient(colors: [.white, .init(white: 0.8)], startPoint: .topLeading, endPoint: .bottomTrailing)
-//                                    )
-//                            })
+                            .overlay(content: {
+                                LinearGradient(colors: [.white.opacity(0.0001), tab.color.opacity(0.8)], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                    .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
+                            })
+                            .shadow(color: .white, radius: 10, x: -7, y: -7)
+                            .shadow(color: tab.color.opacity(0.7), radius: 10, x: 8, y: 8)
                             .matchedGeometryEffect(id: "Selected Tab", in: namespace)
-                            .animation(.spring(), value: selectedTab)
                     }
                     
                     Image(systemName: tab.icon)
                         .font(.system(size: 20, weight: .semibold, design: .rounded))
-                        .foregroundColor(selectedTab == tab ? .gray : .gray)
-                        .animation(selectedTab == tab ? .spring(response: 0.5, dampingFraction: 0.3, blendDuration: 1) : .spring(), value: selectedTab)
+                        .foregroundColor(isSelected ? tab.color : .gray)
+                        .scaleEffect(isSelected ? 1 : 0.9)
+//                        .shadow(color: isSelected ? tab.color.opacity(0.5) : .clear, radius: 5, x: 0, y: 0)
+                        .animation(isSelected ? .spring(response: 0.5, dampingFraction: 0.3, blendDuration: 1) : .spring(), value: selectedTab)
                 }
             }
-            .buttonStyle(.plain)
+//            .buttonStyle(.plain)
+        }
+        
+        private var isSelected: Bool {
+            selectedTab == tab
         }
     }
 }
