@@ -59,9 +59,7 @@
 			children = (
 				302813AD28F9D06300328F2F /* CustomTabBarApp.swift */,
 				302813AF28F9D06300328F2F /* ContentView.swift */,
-				302813BB28F9D0FE00328F2F /* TabBarView1.swift */,
-				302813BD28F9DF9900328F2F /* TabBarView2.swift */,
-				301534AF28F9F18D005F7B96 /* TabBarView3.swift */,
+				D006ED822C37D00A00B7E388 /* Tabbars */,
 				302813B128F9D06800328F2F /* Assets.xcassets */,
 				302813B328F9D06800328F2F /* Preview Content */,
 			);
@@ -74,6 +72,16 @@
 				302813B428F9D06800328F2F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D006ED822C37D00A00B7E388 /* Tabbars */ = {
+			isa = PBXGroup;
+			children = (
+				302813BB28F9D0FE00328F2F /* TabBarView1.swift */,
+				301534AF28F9F18D005F7B96 /* TabBarView3.swift */,
+				302813BD28F9DF9900328F2F /* TabBarView2.swift */,
+			);
+			path = Tabbars;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
