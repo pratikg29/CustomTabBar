@@ -57,6 +57,7 @@ fileprivate struct TabsLayoutView: View {
         
         var body: some View {
             Button {
+                HapticManager.shared.vibrateForSelection()
                 withAnimation(.spring(response: 0.6, dampingFraction: 0.6, blendDuration: 0.6)) {
                     selectedTab = tab
                 }
