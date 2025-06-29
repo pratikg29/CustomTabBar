@@ -9,8 +9,8 @@ import UIKit
 
 
 final class HapticManager {
- static   let shared = HapticManager()
     
+  static let shared = HapticManager()
     
     private init() {}
     
