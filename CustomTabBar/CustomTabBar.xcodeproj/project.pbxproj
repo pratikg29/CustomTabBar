@@ -57,6 +57,7 @@
 		302813AC28F9D06300328F2F /* CustomTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				D01FF2C02E112F6300B8BE90 /* HapticManager */,
 				302813AD28F9D06300328F2F /* CustomTabBarApp.swift */,
 				302813AF28F9D06300328F2F /* ContentView.swift */,
 				D006ED822C37D00A00B7E388 /* Tabbars */,
@@ -82,6 +83,13 @@
 				302813BD28F9DF9900328F2F /* TabBarView2.swift */,
 			);
 			path = Tabbars;
+			sourceTree = "<group>";
+		};
+		D01FF2C02E112F6300B8BE90 /* HapticManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HapticManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
