@@ -14,6 +14,7 @@
 		302813B528F9D06800328F2F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 302813B428F9D06800328F2F /* Preview Assets.xcassets */; };
 		302813BC28F9D0FE00328F2F /* TabBarView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302813BB28F9D0FE00328F2F /* TabBarView1.swift */; };
 		302813BE28F9DF9900328F2F /* TabBarView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302813BD28F9DF9900328F2F /* TabBarView2.swift */; };
+		D01FF2C22E112FB200B8BE90 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01FF2C12E112FB200B8BE90 /* HapticManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		302813B428F9D06800328F2F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		302813BB28F9D0FE00328F2F /* TabBarView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView1.swift; sourceTree = "<group>"; };
 		302813BD28F9DF9900328F2F /* TabBarView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView2.swift; sourceTree = "<group>"; };
+		D01FF2C12E112FB200B8BE90 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 		D01FF2C02E112F6300B8BE90 /* HapticManager */ = {
 			isa = PBXGroup;
 			children = (
+				D01FF2C12E112FB200B8BE90 /* HapticManager.swift */,
 			);
 			path = HapticManager;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 				302813B028F9D06300328F2F /* ContentView.swift in Sources */,
 				302813BE28F9DF9900328F2F /* TabBarView2.swift in Sources */,
 				302813BC28F9D0FE00328F2F /* TabBarView1.swift in Sources */,
+				D01FF2C22E112FB200B8BE90 /* HapticManager.swift in Sources */,
 				302813AE28F9D06300328F2F /* CustomTabBarApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
